@@ -24,9 +24,9 @@ const projectsData: Project[] = [
   // },
   {
     title: 'Kurdish Spell Checker',
-    description: '',
-    imgSrc: '',
-    href: ''
+    description: 'This spell corrector utilizes an encoder-decoder transformer architecture. The model is trained on synthetic data, generated using various hueristics.',
+    imgSrc: '/static/images/projects/spell-checker.webp',
+    href: 'https://huggingface.co/spaces/razhan/Kurd-Spell'
   }
 ]
 
