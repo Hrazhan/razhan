@@ -10,16 +10,16 @@ import type { Authors, Blog } from 'contentlayer/generated'
 import PostSimple from '@/layouts/PostSimple'
 import PostLayout from '@/layouts/PostLayout'
 import PostBanner from '@/layouts/PostBanner'
+import PostBannerLayout from '@/layouts/PostBannerLayout'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
-import { notFound } from 'next/navigation'
 
 const defaultLayout = 'PostLayout'
-
 const layouts = {
   PostSimple,
   PostLayout,
   PostBanner,
+  PostBannerLayout,
 }
 
 export async function generateMetadata({
@@ -87,7 +87,16 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
   if (postIndex === -1) {
-    return notFound()
+    return (
+      <div className="mt-24 text-center">
+        <PageTitle>
+          Under Construction{' '}
+          <span role="img" aria-label="roadwork sign">
+            🚧
+          </span>
+        </PageTitle>
+      </div>
+    )
   }
 
   const prev = sortedCoreContents[postIndex + 1]

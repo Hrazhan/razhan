@@ -7,13 +7,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app https://www.googletagmanager.com https://va.vercel-scripts.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
-  media-src 'none';
+  media-src *.s3.amazonaws.com;
   connect-src *;
   font-src 'self';
-  frame-src https://giscus.app
+  frame-src giscus.app
 `
 
 const securityHeaders = [
@@ -54,24 +54,29 @@ const securityHeaders = [
   },
 ]
 
+const articleMapping = new Map([
+  ['e13e6093', 'bit-hacks/compute-abs'],
+  ['1ddd54b8', 'bit-hacks/compute-power2'],
+  ['438146ef', 'bit-hacks/count-bits'],
+  ['4edea31e', 'other/cpp-calls-ffmpeg-for-rtmp-push'],
+  ['a0caaef2', 'other/design-and-implementation-of-single-cycle-cpu'],
+  ['d6e69539', 'other/trust-project-env.mdx'],
+])
+
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer]
   return plugins.reduce((acc, next) => next(acc), {
+    output: 'standalone',
     reactStrictMode: true,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
     images: {
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'picsum.photos',
-        },
-      ],
+      domains: ['picsum.photos'],
     },
     async headers() {
       return [
@@ -80,6 +85,12 @@ module.exports = () => {
           headers: securityHeaders,
         },
       ]
+    },
+    async rewrites() {
+      return [...articleMapping].map(([slug, destination]) => ({
+        source: `/article/${slug}.html`,
+        destination: `/blog/${destination}`,
+      }))
     },
     webpack: (config, options) => {
       config.module.rules.push({

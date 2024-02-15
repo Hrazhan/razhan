@@ -42,7 +42,6 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-.env
 
 # Contentlayer
 .contentlayer
@@ -51,3 +50,5 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+**/.DS_Store
