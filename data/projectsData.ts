@@ -24,7 +24,7 @@ const projectsData: Project[] = [
     title: 'Kurdish Speech Recognition',
     description: 'This speech recognition model is trained on the Common Voice dataset. The model is based on the Whisper architecture.',
     imgSrc: '/static/images/projects/speech-recognition.webp',
-    href: 'https://huggingface.co/spaces/razhan/whisper-small-ckb'
+    href: 'https://huggingface.co/spaces/razhan/whisper-ckb-demo'
   }
 ]
 
