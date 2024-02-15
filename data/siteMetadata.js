@@ -9,7 +9,7 @@ const siteMetadata = {
   siteUrl: 'https://razhan.vercel.app',
   siteRepo: 'https://github.com/Hrazhan/razhan',
   siteLogo: '/static/images/logo.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/twitter-card.webp',
   // mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'razhan13@gmail.com',
   github: 'https://github.com/Hrazhan',
