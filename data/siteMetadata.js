@@ -1,16 +1,16 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: "Razhan Hameed",
+  title: "razhan.ai",
   author: 'Razhan Hameed',
   headerTitle: 'Razhan Hameed',
   description: 'A blog of my journey in AI, ML, and Software Engineering',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://razhan.vercel.app',
+  siteRepo: 'https://github.com/Hrazhan/razhan',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
-  mastodon: 'https://mastodon.social/@mastodonuser',
+  // mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'razhan13@gmail.com',
   github: 'https://github.com/Hrazhan',
   twitter: 'https://twitter.com/RazhanHameed',
